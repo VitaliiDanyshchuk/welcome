@@ -15,6 +15,8 @@
             <th>Description </th>
             <th>Chief</th>
             <th>Delete</th>
+            <th>Update</th>
+            <th>Info</th>
 
 
         </tr>
@@ -24,29 +26,38 @@
         <#list list as item>
         <tr>
             <td>${item.name}</td>
-            <td>${item.desc}</td>
+            <td>${item.description}</td>
             <td>${item.chief}</td>
             <td><a href="http://localhost:8080/web/cafedra/delete/${item.id}">
                     <input type="button" value="delete" class="btn-danger">
                 </a> </td>
+            <td><a  href="http://localhost:8080/web/cafedra/update/${item.id}">
+                <input type="button", value="Update" class="btn-primary" >
+            </a> </td>
+            <td>
+                <a href="#">
+                    <input type="button" value="info" class="btn-danger">
+                </a>
+            </td>
 
 
         </tr>
     </#list>
     </table>
 
-<div> <a href="/web/cafedra/reloadDB">
-    <input type="button", value="Reload Database" >
-    </a></div>
-
-    <div> <a  href="/web/cafedra/create">
-            <input type="button", value="Create" >
-        </a></div>
-
-
     <div>
+<span> <a href="/web/cafedra/reloadDB">
+    <input class="btn-primary" type="button", value="Reload Database" >
+    </a></span>
+
+    <span> <a  href="/web/cafedra/create">
+            <input class="btn-primary" type="button", value="Create" >
+        </a></span>
+
+    </div>
 
 
+   <!-- <div>
         <form>
             <div class = "form-group">
 
@@ -60,9 +71,8 @@
             <input type="submit" value="CREATE">
                 </div>
         </form>
-
     </div>
-
+-->
 
 
 </div>

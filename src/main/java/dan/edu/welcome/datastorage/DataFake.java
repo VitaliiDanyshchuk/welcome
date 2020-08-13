@@ -21,9 +21,9 @@ public class DataFake {
     GroupRepository groupRepository;
 
     List<Cafedra> cafedras = new LinkedList<>(Arrays.asList(
-            new Cafedra("1","IPZ", "Ivanov", "Engineering"),
-            new Cafedra("2","KN", "Petrov", "MSOffice"),
-            new Cafedra("3","IT", "Pshek", "VoitiVIT")
+            new Cafedra("IPZ", "Ivanov", "Engineering"),
+            new Cafedra("KN", "Petrov", "MSOffice"),
+            new Cafedra("IT", "Pshek", "VoitiVIT")
     ));
 /*
     List<Cafedra> cafedras = new LinkedList<>(Arrays.asList(
@@ -32,7 +32,7 @@ public class DataFake {
             new Cafedra("IT", "Pshek", "VoitiVIT")
     ));*/
 
-    @PostConstruct
+   // @PostConstruct
     public void init(){
         cafedraRepository.deleteAll();
         cafedraRepository.saveAll(cafedras);

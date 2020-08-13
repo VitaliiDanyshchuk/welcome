@@ -5,24 +5,24 @@ public class CafedraForm {
 
     private String id;
     private String name;
-    private String desk;
+    private String description;
     private String chief;
 
 
     public CafedraForm() {
     }
 
-    public CafedraForm(String id, String name, String desk, String chief) {
+    public CafedraForm(String id, String name, String description, String chief) {
         this.id = id;
         this.name = name;
-        this.desk = desk;
+        this.description = description;
         this.chief = chief;
     }
 
 
-    public CafedraForm(String name, String desk, String chief) {
+    public CafedraForm(String name, String description, String chief) {
         this.name = name;
-        this.desk = desk;
+        this.description = description;
         this.chief = chief;
     }
 
@@ -42,12 +42,12 @@ public class CafedraForm {
         this.name = name;
     }
 
-    public String getDesk() {
-        return desk;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesk(String desk) {
-        this.desk = desk;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getChief() {

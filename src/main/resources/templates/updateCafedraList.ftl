@@ -11,7 +11,7 @@
 
 <div>
     <fieldset>
-        <legend>Add cafedra</legend>
+        <legend>Update Database</legend>
         <form name="cafedra" action="" method="POST">
             Name:<@spring.formInput "cafedraForm.name" "" "text"/>
             <br>
@@ -19,7 +19,7 @@
             <br>
             Chief:<@spring.formInput "cafedraForm.chief" "" "text"/>
             <br>
-            <input type="submit" value="Create"/>
+            <input type="submit" value="Update"/>
         </form>
     </fieldset>
 </div>

@@ -4,6 +4,7 @@ import dan.edu.welcome.model.Cafedra;
 import dan.edu.welcome.servises.cafedra.impls.CafedraServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
@@ -49,19 +50,47 @@ public class CafedraWebControler {
     }
 
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String AddCafedra(Model model){
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createCafedra(Model model, @ModelAttribute("cafedraForm") CafedraForm cafedraForm){
         Cafedra cafedra = new Cafedra();
-        cafedra.setName(cafedra.getName());
-        cafedra.setDesc(cafedra.getDesc());
-        cafedra.setChief(cafedra.getChief());
+        cafedra.setName(cafedraForm.getName());
+        cafedra.setDescription(cafedraForm.getDescription());
+        cafedra.setChief(cafedraForm.getChief());
+        cafedraService.create(cafedra);
 
-        model.addAttribute("cafedra", cafedra);
-        return "addCafedraList";
+        model.addAttribute("cafedras", cafedraService.getAll());
+        return "redirect:/web/cafedra/list";
     }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String updateCafedra(@PathVariable("id") String id,Model model) {
+        Cafedra cafedra = cafedraService.get(id);
+        CafedraForm cafedraForm = new CafedraForm(
+                cafedra.getId(),
+                cafedra.getName(),
+                cafedra.getDescription(),
+                cafedra.getChief()
+        );
+        model.addAttribute("cafedraForm", cafedraForm);
+        return "updateCafedraList";
+    }
 
-}
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String updateCafedra(Model model, @PathVariable("id") String id,
+                                 @ModelAttribute("cafedraForm") CafedraForm cafedraForm){
+        Cafedra cafedra = new Cafedra();
+        cafedra.setId(id);
+        cafedra.setName(cafedraForm.getName());
+        cafedra.setDescription(cafedraForm.getDescription());
+        cafedra.setChief(cafedraForm.getChief());
+        cafedraService.update(cafedra);
+
+        model.addAttribute("cafedraForm", cafedraService.getAll());
+        return "redirect:/web/cafedra/list";
+    }
+
+    }
+
 
 
 

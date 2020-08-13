@@ -20,8 +20,9 @@ class CafedraRestController {
     @Autowired
     CafedraServiceImpl cafedraServiceImpl;
 
+
     @RequestMapping("")
-    String getIndex(){
+    String getIndex() {
         return "<h1>Index Web Controller</h1>";
     }
 
@@ -40,6 +41,13 @@ class CafedraRestController {
         return cafedraServiceImpl.get(id);
     }
 
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    Cafedra createCafedra(@RequestBody Cafedra cafedra) {
+        return cafedraServiceImpl.create(cafedra);
+    }
 
-
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    Cafedra updateCafedra(@RequestBody Cafedra cafedra) {
+        return cafedraServiceImpl.create(cafedra);
+    }
 }
